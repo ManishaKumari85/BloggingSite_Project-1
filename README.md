@@ -55,7 +55,7 @@ example of a query url: blogs?filtername=filtervalue&f2=fv2
 - Delete blog documents by category, authorid, tag name, subcategory name, unpublished
 - If the blog document doesn't exist then return an HTTP status of 404 with a body like [this](#error-response-structure)
 
-## Phase II
+## Phase II 
 
 - Add authentication and authroisation feature
 

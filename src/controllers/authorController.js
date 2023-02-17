@@ -2,11 +2,12 @@ const authorModel = require("../models/authorModel");
 
 const createAuthor = async function(req, res){
   try{
-    const details = req.body;
+    let details = req.body 
 
     const letters = /^[A-Za-z]+$/;
+    //console.log(details)
 
-    if(!details.fname) return res.status(400).send({status: false, msg: "First name is required"} );
+    if(!details.fname) return res.status(400).send({status: false, msg: "first name is required"} );
     if(!details.fname.match(letters)){return res.status(400).send({status: false, msg: 'First name should contain only alphabets'})};
     
     if(!details.lname) return res.status(400).send({status: false, msg: "Last name is required"} );
@@ -25,8 +26,8 @@ const createAuthor = async function(req, res){
     const validateEmail = (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(details.email));
     if(!validateEmail) return res.status(400).send({status: false, msg: "Invalid Email ID, Please check"});
   
-    const data = await authorModel.create(details)
-    res.status(201).send({status: true, data: data});    
+    const data = await authorModel.create(details)  
+    res.status(201).send({status: true, data: data});     
   }
   catch(err){
     res.status(500).send({status: false, error: err.message});
